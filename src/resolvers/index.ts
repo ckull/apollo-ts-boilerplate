@@ -14,19 +14,25 @@ const resolvers = {
         return User
     },
     user: async (parent: any, args: UserArgs) => {
-        console.log('user')
+      const { name } = args
+        return await User.findOne({ where: { name }})
     }
   },
   Mutation: {
     addUser: async (parent: any, args: UserArgs)=> {
-        console.log('args: ', args)
-      let { email, password} = args
-      const hashedPassword = await bcrypt.hash(password, 10) 
-      await User.create({
-        email, 
-        password: hashedPassword
-      })
-      return true
+      let { email, password, name} = args
+      try {
+        const hashedPassword = await bcrypt.hash(password, 10) 
+        const user = User.create({
+          email, 
+          password: hashedPassword,
+          name
+        })
+        await User.save(user)
+        return true
+      } catch(err)  {
+        return err
+      }
     }
   }
 };
