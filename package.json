@@ -25,6 +25,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.6",
     "@types/node": "^16.7.1",
     "@types/uuid": "^8.3.1",
     "ts-node": "^10.2.1",
