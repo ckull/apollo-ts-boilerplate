@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server'
+// import { gql } from 'apollo-server'
 
-const User = gql`
+const User = `
     type User {
         name: String!,
         email: String!,

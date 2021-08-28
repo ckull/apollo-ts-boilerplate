@@ -1,17 +1,13 @@
 
 import * as bcrypt from 'bcryptjs'
-import { User } from '../entity/User'
+import { User } from '../../entity/User'
 
-interface UserArgs {
-    name: string;
-    email: string;
-    password: string;
-}
+import { UserArgs } from './interface'
 
 const resolvers = {
   Query: {
     users: async (parent: any, args: UserArgs) => {
-        return User
+        return await User.find()
     },
     user: async (parent: any, args: UserArgs) => {
       const { name } = args
